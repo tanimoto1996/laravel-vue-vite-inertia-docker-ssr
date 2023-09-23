@@ -2,6 +2,9 @@ import { createInertiaApp } from '@inertiajs/vue3'
 import createServer from '@inertiajs/vue3/server'
 import { renderToString } from '@vue/server-renderer'
 import { createSSRApp, h } from 'vue'
+import { ZiggyVue } from 'ziggyVue';
+import { Ziggy } from './ziggy';
+
 
 createServer(page =>
 	createInertiaApp({
@@ -12,9 +15,12 @@ createServer(page =>
 			return pages[`./Pages/${name}.vue`]
 		},
 		setup({ App, props, plugin }) {
-			return createSSRApp({
-				render: () => h(App, props),
-			}).use(plugin)
+			const ssr = createSSRApp({ render: () => h(App, props) });
+
+			ssr.use(ZiggyVue, Ziggy);
+			ssr.use(plugin);
+
+			return ssr;
 		},
 	}),
 )
