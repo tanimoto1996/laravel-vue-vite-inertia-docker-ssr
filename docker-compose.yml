@@ -17,7 +17,7 @@ services:
     build:
       context: ./docker/app/
     ports:
-      - "5173:5173" # Viteのポート
+      - "5174:5174" # Viteのポート
     volumes:
       - ./src:/var/www/html/
       - ./docker/app/www.conf:/etc/php-fpm.d/www.conf

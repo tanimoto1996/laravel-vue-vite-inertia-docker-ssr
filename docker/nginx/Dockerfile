@@ -5,6 +5,6 @@ FROM amazonlinux:2023
 RUN dnf -y update
 RUN dnf -y install nginx
 
-EXPOSE 5173
+EXPOSE 5174
 
 ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
