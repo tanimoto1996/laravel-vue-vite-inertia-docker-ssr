@@ -36,5 +36,11 @@ services:
       POSTGRES_USER: tanimoto
       POSTGRES_PASSWORD: Kazumakouki1
 
+  mailhog:
+    image: 'mailhog/mailhog:latest'
+    ports:
+      - "8025:8025"  # Web UIへのアクセス用
+      - "1025:1025"  # SMTPサーバへのアクセス用
+
 volumes:
   pgdb-laravel_vue-volume:
