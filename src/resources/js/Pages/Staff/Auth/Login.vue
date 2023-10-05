@@ -14,14 +14,12 @@ defineProps({
     status: {
         type: String,
     },
-    errors: Object, // errorsプロパティ追加
 });
 
 const form = useForm({
     email: '',
     password: '',
     remember: false,
-    errors: {}  // errorsプロパティを初期化
 });
 
 const submit = () => {
@@ -57,7 +55,7 @@ const submit = () => {
                 />
 
                 <!-- form.errors.emailからerrors.emailに変更 -->
-                <InputError class="mt-2" :message="errors.email" />
+                <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
             <div class="mt-4">
@@ -72,7 +70,7 @@ const submit = () => {
                     autocomplete="current-password"
                 />
 
-                <InputError class="mt-2" :message="errors.password" />
+                <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
             <div class="block mt-4">
